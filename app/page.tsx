@@ -135,7 +135,7 @@ export default function Portfolio() {
               <h4 className="text-xl font-bold text-slate-200">Kamek (AI Integration)</h4>
               <p className="text-sm text-slate-400">REST APIs for weather forecasts, cocoa news, disease analysis, and prediction result storage.</p>
               <div className="flex flex-wrap gap-2">
-                <span className="px-2 py-1 bg-slate-800 text-xs rounded text-blue-300">Laravel API</span>
+                <span className="px-2 py-1 bg-slate-800 text-xs rounded text-blue-300">Express.js</span>
                 <span className="px-2 py-1 bg-slate-800 text-xs rounded text-blue-300">AI Model Integration</span>
               </div>
             </div>
@@ -222,8 +222,8 @@ export default function Portfolio() {
             <div className="space-y-2">
               <h4 className="font-bold text-slate-200">Andalas University</h4>
               <p className="text-sm text-blue-400">Bachelor of Computer Engineering</p>
-              <p className="text-sm text-slate-500">Sep 2021 – Present • Expected Graduation: Sep 2025</p>
-              <p className="text-sm text-slate-400 pt-2 border-t border-slate-800/50 inline-block">GPA: <span className="font-semibold text-slate-200">3.9</span></p>
+              <p className="text-sm text-slate-500">Sep 2021 – Aug 2025</p>
+              <p className="text-sm text-slate-400 pt-2 border-t border-slate-800/50 inline-block">GPA: <span className="font-semibold text-slate-200">3.91</span></p>
             </div>
             
             <h3 className="text-2xl font-bold text-slate-100 border-b border-slate-800 pb-2 mt-8 pt-4">Community</h3>
