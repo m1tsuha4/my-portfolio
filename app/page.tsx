@@ -1,256 +1,164 @@
-import React from 'react';
+import React from "react";
+import Image from "next/image";
+
+const navItems = [
+  ["Home", "#home"], ["About", "#about"], ["Skills", "#skills"],
+  ["Projects", "#projects"], ["Experience", "#experience"], ["Achievements", "#achievements"],
+];
+
+const professionalSkills = [
+  ["PHP", "🐘"], ["JavaScript", "JS"], ["TypeScript", "TS"], ["Node.js", "⬡"],
+  ["Laravel", "◆"], ["NestJS", "N"], ["Express.js", "EX"], ["Python", "PY"],
+  ["MySQL", "🐬"], ["PostgreSQL", "🐘"], ["SQLite", "SQ"], ["Supabase", "⚡"],
+  ["Solidity", "◆"], ["Docker", "▣"], ["Google Cloud", "G"], ["REST APIs", "↔"],
+];
+
+const tools = [
+  ["Linux", "🐧"], ["VS Code", "⌄"], ["Git", "◆"], ["Postman", "P"], ["Firebase", "🔥"],
+];
+
+const projectLinks: Record<string, string> = {
+  "Smart Toilet DLH Kota Padang": "https://github.com/m1tsuha4/smart-toilet-dlh",
+  "Mitbiz — SaaS Chatbot": "https://github.com/m1tsuha4/saas-metro",
+  "Altama Project": "https://github.com/m1tsuha4/altama-api",
+  "Ganie Tryout": "https://github.com/m1tsuha4/ganie-tryout-api",
+};
+
+const projects = [
+  ["Gameblink Booking System", "Scalable booking and payment API supporting 100+ transactions daily, with Midtrans, branch management, and revenue monitoring.", ["NestJS", "MySQL", "Midtrans"]],
+  ["Dotter — Detect Otter", "AI-based real-time wildlife monitoring system using Raspberry Pi, YOLO, Hailo AI, Supabase, and Flutter.", ["Raspberry Pi", "YOLOv11", "Supabase"]],
+  ["Dansa Bonafide", "Multi-branch business system covering inventory, cashier operations, payroll, attendance, and KPI tracking.", ["Express.js", "SQLite"]],
+  ["TheSuaraKu", "Blockchain-based decentralized e-voting application with Express.js and smart contracts.", ["Express.js", "Solidity", "Ganache"]],
+  ["Pharmacy Information System", "Inventory and sales management with stock tracking, daily transactions, and automated financial reporting.", ["Laravel", "MySQL"]],
+  ["Kamek", "AI-powered agricultural application with backend REST APIs and cloud data storage.", ["Express.js", "AI/ML", "REST API"]],
+  ["Gym Guide", "Exercise instruction application developed with Bangkit Academy's cross-functional mobile, machine-learning, and cloud teams.", ["Node.js", "GCP", "Cloud Storage"]],
+  ["Smart Toilet DLH Kota Padang", "IoT public-toilet monitoring dashboard with QRIS payments, gate-device communication, visitor logs, and revenue reporting.", ["NestJS", "PostgreSQL", "IoT"]],
+  ["Mitbiz — SaaS Chatbot", "Omnichannel SaaS chatbot platform connecting Gmail and WhatsApp for automated customer communication and AI-powered workflows.", ["NestJS", "WhatsApp", "Gmail", "OpenAI"]],
+  ["Altama Project", "Corporate landing pages and an administration dashboard for Tekiro, Ryu Power Tools, and Rexco Solution.", ["TypeScript", "NestJS", "Prisma", "Dashboard"]],
+  ["Ganie Tryout", "Web exam platform for university entrance preparation, with cached tryout and exam data powered by Redis.", ["NestJS", "PostgreSQL", "Prisma", "Redis"]],
+];
 
 export default function Portfolio() {
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-300 font-sans selection:bg-blue-500/30">
-      <main className="max-w-5xl mx-auto px-6 py-16 md:py-24 space-y-24">
-        
-        {/* 1. HERO SECTION */}
-        <section className="space-y-6">
-          <h1 className="text-4xl md:text-6xl font-bold text-slate-100 tracking-tight">
-            Hi, I'm Iqbal Defri Prasetya
-          </h1>
-          <h2 className="text-xl md:text-2xl font-medium text-blue-400">
-            Backend Developer — Laravel • NestJS • Express.js • Supabase • GCP • Docker
-          </h2>
-          <p className="text-lg md:text-xl max-w-2xl leading-relaxed text-slate-400">
-            I build scalable backend systems, secure payment integrations, and blockchain applications, with experience integrating AI/IoT pipelines into real-world production.
-          </p>
-          <div className="flex gap-4 pt-4">
-            <a href="#projects" className="px-6 py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition">
-              View Projects
-            </a>
-            <a href="mailto:iqbaldefriprasetya@gmail.com" className="px-6 py-3 border border-slate-700 rounded-lg font-medium hover:bg-slate-800 transition text-slate-200">
-              Contact Me
-            </a>
-          </div>
-        </section>
+    <div className="portfolio-shell">
+      <nav className="navbar" aria-label="Primary navigation">
+        <a className="brand" href="#home" aria-label="Iqbal Defri Prasetya home">IDP<span>.</span></a>
+        <div className="nav-links">
+          {navItems.map(([label, href]) => <a key={href} href={href}>{label}</a>)}
+        </div>
+        <div className="nav-actions"><a className="nav-button" href="#contact">Contact</a></div>
+      </nav>
 
-        {/* 2. ABOUT ME */}
-        <section className="space-y-6">
-          <h3 className="text-2xl font-bold text-slate-100 border-b border-slate-800 pb-2">About Me</h3>
-          <div className="space-y-4 text-slate-400 leading-relaxed text-lg">
-            <p>
-              Detail-oriented Backend Developer with hands-on experience in building and optimizing server-side applications using Laravel, NestJS, Express.js, and Supabase. 
-            </p>
-            <p>
-              Skilled in API design, database modeling, cloud deployment with Google Cloud Run, containerization with Docker, and blockchain integration using Solidity. Experienced integrating AI/IoT pipelines (YOLOv11 + Hailo AI Kit) into production-style apps.
-            </p>
-          </div>
-        </section>
-
-        {/* 3. SKILLS */}
-        <section className="space-y-6">
-          <h3 className="text-2xl font-bold text-slate-100 border-b border-slate-800 pb-2">Technical Arsenal</h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            <div className="space-y-3">
-              <h4 className="font-semibold text-slate-200">Languages</h4>
-              <ul className="text-sm text-slate-400 space-y-2">
-                <li>PHP & Python</li>
-                <li>JavaScript & TypeScript</li>
-                <li>SQL & Solidity</li>
-              </ul>
-            </div>
-            <div className="space-y-3">
-              <h4 className="font-semibold text-slate-200">Frameworks / Runtime</h4>
-              <ul className="text-sm text-slate-400 space-y-2">
-                <li>Laravel</li>
-                <li>NestJS</li>
-                <li>Express.js & Node.js</li>
-              </ul>
-            </div>
-            <div className="space-y-3">
-              <h4 className="font-semibold text-slate-200">Database & Cloud</h4>
-              <ul className="text-sm text-slate-400 space-y-2">
-                <li>MySQL, PostgreSQL, SQLite</li>
-                <li>Supabase & Firebase</li>
-                <li>GCP (Cloud Run, Storage)</li>
-              </ul>
-            </div>
-            <div className="space-y-3">
-              <h4 className="font-semibold text-slate-200">DevOps, Web & AI</h4>
-              <ul className="text-sm text-slate-400 space-y-2">
-                <li>Docker & Nginx</li>
-                <li>REST API, JWT, OAuth2</li>
-                <li>YOLOv11 & Smart Contracts</li>
-              </ul>
+      <main>
+        <section id="home" className="hero section-wrap">
+          <div className="hero-copy">
+            <p className="eyebrow">Hi there! <span className="wave">👋🏻</span></p>
+            <h1>I&apos;m <strong>Iqbal Defri<br />Prasetya</strong></h1>
+            <p className="role"><span>Backend Developer</span></p>
+            <p className="hero-text">I build scalable JavaScript applications, secure payment integrations, RESTful APIs, and production-ready AI/IoT systems.</p>
+            <div className="hero-actions">
+              <a className="primary-button" href="#projects">View Projects</a>
+              <a className="secondary-button" href="/CV_IQBAL_DEFRI_PRASETYA.pdf" download>Download Resume ↓</a>
             </div>
           </div>
-        </section>
-
-        {/* 4. PROJECTS */}
-        <section id="projects" className="space-y-6">
-          <h3 className="text-2xl font-bold text-slate-100 border-b border-slate-800 pb-2">Featured Projects</h3>
-          <div className="grid md:grid-cols-2 gap-6">
-            
-            <div className="p-6 bg-slate-900 border border-slate-800 rounded-xl space-y-4 hover:border-blue-500/50 transition">
-              <h4 className="text-xl font-bold text-slate-200">Gameblink Booking System</h4>
-              <p className="text-sm text-slate-400">RESTful API for booking gaming consoles with payment gateway integration. Handles ~300 transactions/day with an admin dashboard to monitor revenue.</p>
-              <div className="flex flex-wrap gap-2">
-                <span className="px-2 py-1 bg-slate-800 text-xs rounded text-blue-300">NestJS</span>
-                <span className="px-2 py-1 bg-slate-800 text-xs rounded text-blue-300">MySQL</span>
-                <span className="px-2 py-1 bg-slate-800 text-xs rounded text-blue-300">Midtrans</span>
+          <div className="hero-art" aria-label="Portrait of Iqbal Defri Prasetya">
+            <div className="portrait-card">
+              <div className="card-window-bar">
+                <div className="code-dots"><i /><i /><i /></div>
+                <span>iqbal@portfolio</span>
+                <b>●</b>
+              </div>
+              <div className="card-code-line">console.log(<strong>&apos;Hello, World!&apos;</strong>);</div>
+              <div className="portrait-image">
+                <Image src="/iqbal-defri-prasetya.jpeg" alt="Iqbal Defri Prasetya sitting outdoors" fill sizes="(max-width: 600px) 280px, 360px" priority />
+              </div>
+              <div className="portrait-overlay">
+                <div className="overlay-icon">⚡</div>
+                <div><strong>Backend &amp; Cloud</strong><span>Node.js • NestJS • GCP • Docker</span></div>
+                <b>Backend Developer</b>
               </div>
             </div>
-
-            <div className="p-6 bg-slate-900 border border-slate-800 rounded-xl space-y-4 hover:border-blue-500/50 transition">
-              <h4 className="text-xl font-bold text-slate-200">Dotter (Detect Otter)</h4>
-              <p className="text-sm text-slate-400">Monitoring system for otter detection integrating AI/IoT pipelines into a production app, serving real-time Flutter mobile app monitoring.</p>
-              <div className="flex flex-wrap gap-2">
-                <span className="px-2 py-1 bg-slate-800 text-xs rounded text-blue-300">Raspberry Pi 5</span>
-                <span className="px-2 py-1 bg-slate-800 text-xs rounded text-blue-300">YOLOv11</span>
-                <span className="px-2 py-1 bg-slate-800 text-xs rounded text-blue-300">Supabase</span>
-              </div>
-            </div>
-
-             <div className="p-6 bg-slate-900 border border-slate-800 rounded-xl space-y-4 hover:border-blue-500/50 transition">
-              <h4 className="text-xl font-bold text-slate-200">Dansa Bonafide Business System</h4>
-              <p className="text-sm text-slate-400">Multi-branch system covering inventory, cashier operations, payroll, KPI, and employee attendance.</p>
-              <div className="flex flex-wrap gap-2">
-                <span className="px-2 py-1 bg-slate-800 text-xs rounded text-blue-300">Express.js</span>
-                <span className="px-2 py-1 bg-slate-800 text-xs rounded text-blue-300">SQLite</span>
-              </div>
-            </div>
-
-            <div className="p-6 bg-slate-900 border border-slate-800 rounded-xl space-y-4 hover:border-blue-500/50 transition">
-              <h4 className="text-xl font-bold text-slate-200">TheSuaraKu (Hackathon)</h4>
-              <p className="text-sm text-slate-400">Blockchain-based decentralized e-voting application with a secure backend API.</p>
-              <div className="flex flex-wrap gap-2">
-                <span className="px-2 py-1 bg-slate-800 text-xs rounded text-blue-300">Express.js</span>
-                <span className="px-2 py-1 bg-slate-800 text-xs rounded text-blue-300">Solidity</span>
-                <span className="px-2 py-1 bg-slate-800 text-xs rounded text-blue-300">Ganache</span>
-              </div>
-            </div>
-
-            <div className="p-6 bg-slate-900 border border-slate-800 rounded-xl space-y-4 hover:border-blue-500/50 transition">
-              <h4 className="text-xl font-bold text-slate-200">Pharmacy Information System</h4>
-              <p className="text-sm text-slate-400">REST API built for managing medicine stock, sales, purchases, employee data, and financial reporting.</p>
-              <div className="flex flex-wrap gap-2">
-                <span className="px-2 py-1 bg-slate-800 text-xs rounded text-blue-300">Laravel</span>
-                <span className="px-2 py-1 bg-slate-800 text-xs rounded text-blue-300">SQLite</span>
-              </div>
-            </div>
-
-            <div className="p-6 bg-slate-900 border border-slate-800 rounded-xl space-y-4 hover:border-blue-500/50 transition">
-              <h4 className="text-xl font-bold text-slate-200">Kamek (AI Integration)</h4>
-              <p className="text-sm text-slate-400">REST APIs for weather forecasts, cocoa news, disease analysis, and prediction result storage.</p>
-              <div className="flex flex-wrap gap-2">
-                <span className="px-2 py-1 bg-slate-800 text-xs rounded text-blue-300">Express.js</span>
-                <span className="px-2 py-1 bg-slate-800 text-xs rounded text-blue-300">AI Model Integration</span>
-              </div>
-            </div>
-
           </div>
         </section>
 
-        {/* 5. EXPERIENCE */}
-        <section className="space-y-6">
-          <h3 className="text-2xl font-bold text-slate-100 border-b border-slate-800 pb-2">Experience</h3>
-          <div className="space-y-8 border-l border-slate-800 ml-3 pl-8 relative">
-            
-            <div className="relative">
-              <span className="absolute -left-10 w-4 h-4 bg-blue-600 rounded-full mt-1.5 ring-4 ring-slate-950"></span>
-              <h4 className="text-lg font-bold text-slate-200">Backend Developer</h4>
-              <p className="text-sm text-blue-400 mb-2">PT Metro Indonesian Software | May 2024 – Present</p>
-              <ul className="text-sm text-slate-400 list-disc list-inside space-y-1">
-                <li>Designed, developed, and maintained backend systems using Laravel, NestJS, Express.js.</li>
-                <li>Implemented authentication, RBAC, and query optimizations.</li>
-                <li>Integrated Midtrans payment gateway for secure online transactions.</li>
-                <li>Delivered scalable solutions (Pharmacy, Business Management, Gameblink).</li>
-              </ul>
-            </div>
-
-            <div className="relative">
-              <span className="absolute -left-10 w-4 h-4 bg-slate-700 rounded-full mt-1.5 ring-4 ring-slate-950"></span>
-              <h4 className="text-lg font-bold text-slate-200">Internship Trainee, Backend Developer</h4>
-              <p className="text-sm text-slate-500 mb-2">PT Metro Indonesian Software | Mar 2024 – Apr 2024</p>
-              <ul className="text-sm text-slate-400 list-disc list-inside space-y-1">
-                <li>Developed pilot backend for company profile website (auth, roles, portfolios).</li>
-                <li>Built secure RESTful APIs and collaborated with frontend for seamless integration.</li>
-              </ul>
-            </div>
-
-            <div className="relative">
-              <span className="absolute -left-10 w-4 h-4 bg-slate-700 rounded-full mt-1.5 ring-4 ring-slate-950"></span>
-              <h4 className="text-lg font-bold text-slate-200">Internship Trainee, Backend Developer</h4>
-              <p className="text-sm text-slate-500 mb-2">RLA Digital Marketing Agency | Jan 2024 – Mar 2024</p>
-              <ul className="text-sm text-slate-400 list-disc list-inside space-y-1">
-                <li>Developed RESTful APIs for Silungkang Playground mobile app.</li>
-                <li>Helped build admin dashboard using PHP native & JavaScript.</li>
-              </ul>
-            </div>
-
-            <div className="relative">
-              <span className="absolute -left-10 w-4 h-4 bg-slate-700 rounded-full mt-1.5 ring-4 ring-slate-950"></span>
-              <h4 className="text-lg font-bold text-slate-200">Cloud Computing Student</h4>
-              <p className="text-sm text-slate-500 mb-2">Bangkit Academy | Aug 2023 – Jan 2024</p>
-              <ul className="text-sm text-slate-400 list-disc list-inside space-y-1">
-                <li>Built prediction API on Google Cloud Run and integrated video storage on Cloud Storage.</li>
-              </ul>
-            </div>
-
+        <section id="about" className="section-wrap intro-section">
+          <div>
+            <p className="section-kicker">Discover</p>
+            <h2>Let me <span>introduce</span> myself</h2>
+            <p>Backend developer with 2+ years of hands-on experience building scalable JavaScript applications using Node.js, Express.js, NestJS, and Laravel.</p>
+            <p>I specialize in <strong className="accent">RESTful APIs, database optimization, authentication, RBAC, cloud deployment, and secure payment integrations</strong>, and enjoy collaborating across product and engineering teams.</p>
+          </div>
+          <div className="about-stats">
+            <div><strong>2+</strong><span>Years experience</span></div>
+            <div><strong>10+</strong><span>Featured projects</span></div>
+            <div><strong>3.91</strong><span>University GPA</span></div>
           </div>
         </section>
 
-        {/* 6. ACHIEVEMENTS & EDUCATION */}
-        <section className="grid md:grid-cols-2 gap-12">
-          
-          <div className="space-y-6">
-            <h3 className="text-2xl font-bold text-slate-100 border-b border-slate-800 pb-2">Achievements</h3>
-            <ul className="space-y-5 text-sm text-slate-400">
-              <li>
-                <span className="text-lg">🥇</span> <strong className="text-slate-200">Gold Medal — MSU iRex 2025</strong><br/>
-                Presented Dotter (Detect Otter) integrating Raspberry Pi 5 + Hailo AI Kit, Supabase, and Flutter in Shah Alam, Malaysia.
-              </li>
-              <li>
-                <span className="text-lg">🥈</span> <strong className="text-slate-200">2nd Place — Hackathon CyberTech PNP 2024</strong><br/>
-                Blockchain-powered e-voting system (TheSuaraKu).
-              </li>
-              <li>
-                <span className="text-lg">🥈</span> <strong className="text-slate-200">2nd Place — Adiwidya Hackfest 2024 (ITB)</strong><br/>
-                Kamek backend API with AI model integration.
-              </li>
-              <li>
-                <span className="text-lg">🥈</span> <strong className="text-slate-200">Silver Medal — IATC 2024</strong><br/>
-                Early prototype of Kamek integrating AI & backend APIs.
-              </li>
-            </ul>
+        <section id="skills" className="section-wrap skills-section">
+          <div className="section-heading"><p className="section-kicker">Expertise</p><h2>Professional <span>skillset</span></h2></div>
+          <div className="skill-pills">
+            {professionalSkills.map(([name, icon]) => <span className="skill-pill" key={name}><i>{icon}</i>{name}</span>)}
           </div>
-
-          <div className="space-y-6">
-            <h3 className="text-2xl font-bold text-slate-100 border-b border-slate-800 pb-2">Education</h3>
-            <div className="space-y-2">
-              <h4 className="font-bold text-slate-200">Andalas University</h4>
-              <p className="text-sm text-blue-400">Bachelor of Computer Engineering</p>
-              <p className="text-sm text-slate-500">Sep 2021 – Aug 2025</p>
-              <p className="text-sm text-slate-400 pt-2 border-t border-slate-800/50 inline-block">GPA: <span className="font-semibold text-slate-200">3.91</span></p>
-            </div>
-            
-            <h3 className="text-2xl font-bold text-slate-100 border-b border-slate-800 pb-2 mt-8 pt-4">Community</h3>
-            <div className="space-y-2">
-              <h4 className="font-bold text-slate-200">Neo Telemetri Student Organization</h4>
-              <p className="text-sm text-blue-400">Backend Developer & Organizing Committee</p>
-              <p className="text-sm text-slate-500">Aug 2022 – Sep 2024</p>
-              <p className="text-sm text-slate-400 pt-1">Built SIPENJARU (room booking) in Laravel & SQLite. Conducted web bootcamps for new members.</p>
-            </div>
-          </div>
-
-        </section>
-
-        {/* 7. CONTACT */}
-        <section id="contact" className="space-y-6 text-center pt-12 border-t border-slate-800">
-          <h3 className="text-2xl font-bold text-slate-100">Let's Build Something</h3>
-          <p className="text-slate-400 max-w-md mx-auto">Open to backend roles, internships, and collaborations. Feel free to reach out.</p>
-          <div className="flex justify-center items-center gap-6 pt-4">
-            <a href="mailto:iqbaldefriprasetya@gmail.com" className="text-slate-400 hover:text-blue-400 transition">Email</a>
-            <span className="w-1.5 h-1.5 rounded-full bg-slate-700"></span>
-            <a href="https://github.com/m1tsuha4" target="_blank" rel="noreferrer" className="text-slate-400 hover:text-blue-400 transition">GitHub</a>
-            <span className="w-1.5 h-1.5 rounded-full bg-slate-700"></span>
-            <a href="https://www.linkedin.com/in/iqbal-defri-prasetya-24a746128/" target="_blank" rel="noreferrer" className="text-slate-400 hover:text-blue-400 transition">LinkedIn</a>
+          <div className="section-heading tools-heading"><h2><span>Tools</span> I use</h2></div>
+          <div className="skill-pills tools-pills">
+            {tools.map(([name, icon]) => <span className="skill-pill" key={name}><i>{icon}</i>{name}</span>)}
           </div>
         </section>
 
+        <section id="projects" className="section-wrap">
+          <div className="section-heading"><p className="section-kicker">Portfolio</p><h2>My recent <span>works</span></h2></div>
+          <div className="project-grid">
+            {projects.map(([title, description, tags], index) => (
+              <article className="project-card" key={title as string}>
+                <div className="project-number">{String(index + 1).padStart(2, "0")}</div>
+                <h3>{title as string}</h3>
+                <p>{description as string}</p>
+                <div className="tags">{(tags as string[]).map((tag) => <span key={tag}>{tag}</span>)}</div>
+                {projectLinks[title as string] && (
+                  <a className="project-link" href={projectLinks[title as string]} target="_blank" rel="noreferrer">GitHub ↗</a>
+                )}
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section id="experience" className="section-wrap experience-section">
+          <div className="section-heading"><p className="section-kicker">Journey</p><h2>Experience &amp; <span>organizations</span></h2></div>
+          <div className="timeline">
+            <article><span className="timeline-dot" /><time>May 2024 — Nov 2026</time><h3>Backend Developer</h3><p>PT Metro Indonesian Software</p><small>Built RESTful APIs, authentication, role-based access control, Midtrans integrations, and multi-branch business systems.</small></article>
+            <article><span className="timeline-dot" /><time>Jan 2024 — Mar 2024</time><h3>Backend Developer Intern</h3><p>RLA Digital Marketing Agency</p><small>Developed mobile-app REST APIs and collaborated with mobile developers on admin dashboard integrations.</small></article>
+            <article><span className="timeline-dot" /><time>Nov 2023 — Jun 2024</time><h3>Backend Developer Core Team</h3><p>Google Developer Student Club UNAND</p><small>Led backend workshops and technical sharing sessions while collaborating on educational technology projects.</small></article>
+            <article><span className="timeline-dot" /><time>Sep 2022 — Sep 2024</time><h3>Backend Developer &amp; Committee Member</h3><p>Neo Telemetri Student Organization</p><small>Developed internal Laravel systems and conducted backend bootcamps for recruitment participants.</small></article>
+            <article><span className="timeline-dot" /><time>Aug 2023 — Jan 2024</time><h3>Cloud Computing Student</h3><p>Bangkit Academy 2023</p><small>Built Gym Guide with cross-disciplinary teams, deployed APIs on Google Cloud Run, and managed Cloud Storage media.</small></article>
+          </div>
+        </section>
+
+        <section id="achievements" className="section-wrap achievements-section">
+          <div className="section-heading"><p className="section-kicker">Recognition</p><h2>Achievements &amp; <span>education</span></h2></div>
+          <div className="education-grid">
+            <article><span>🥇</span><small>Gold Medal · MSU iRex 2025</small><h3>AI Monitoring System</h3><p>Raspberry Pi and YOLO-based wildlife monitoring system in Malaysia.</p></article>
+            <article><span>🥈</span><small>2nd Place · National Hackathon 2024</small><h3>Blockchain E-Voting</h3><p>Secure blockchain-based online voting system using Express.js and smart contracts.</p></article>
+            <article><span>🥈</span><small>2nd Place · Adiwidya Hackfest 2024</small><h3>Kamek AI Agriculture</h3><p>AI-powered agricultural application with REST APIs and data storage.</p></article>
+            <article><span>🏅</span><small>Silver Medal · IATC 2024</small><h3>AI Cocoa Pod Prototype</h3><p>Android prototype for cocoa pod classification and price prediction.</p></article>
+          </div>
+          <div className="education-card">
+            <div><p className="section-kicker">Education</p><h2>Andalas University</h2><p className="accent">Bachelor of Computer Engineering</p><small>September 2021 — July 2025 · GPA 3.91</small></div>
+            <p>Outstanding Student Award · Campus Activist Award<br />Coursework: Web Development, Databases, Cloud Computing, Software Engineering</p>
+          </div>
+        </section>
+
+        <section id="contact" className="section-wrap contact-section">
+          <p className="section-kicker">Get in touch</p><h2>Let&apos;s build <span>something</span></h2>
+          <p>Open to backend roles, collaborations, and meaningful technology projects.</p>
+          <div className="hero-actions"><a className="primary-button" href="mailto:iqbaldefriprasetya@gmail.com">Email Me</a><a className="secondary-button" href="/CV_IQBAL_DEFRI_PRASETYA.pdf" download>Download Resume ↓</a></div>
+        </section>
       </main>
+
+      <footer>
+        <p>Designed &amp; built by <strong>Iqbal Defri Prasetya</strong></p>
+        <div><a href="mailto:iqbaldefriprasetya@gmail.com">Email</a><a href="https://github.com/m1tsuha4" target="_blank" rel="noreferrer">GitHub</a><a href="https://www.linkedin.com/in/iqbal-defri-prasetya-24a746128/" target="_blank" rel="noreferrer">LinkedIn</a></div>
+      </footer>
     </div>
   );
 }
